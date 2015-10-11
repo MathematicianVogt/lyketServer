@@ -1,6 +1,8 @@
 import tornado.ioloop
 import tornado.web
 import os
+import pymongo
+import MongoLib
 
 class HomeHandler(tornado.web.RequestHandler):
 	def get(self):
@@ -10,6 +12,21 @@ class ExampleHandler(tornado.web.RequestHandler):
 	
 	def get(self, variable_name=''):
 		self.write({'results': variable_name})
+<<<<<<< HEAD
+=======
+
+class ArticleHandler(tornado.web.RequestHandler):
+	def get(self):
+		db=MongoLib("lyket", "articles")
+		#Set number for last 10 enteries, or last N articles 
+		LastN=db.getLastN(10)
+		dic = {}
+		dic['results'] = getLastN
+		self.write(dic)
+
+
+		
+>>>>>>> dev
 
 def main():
 	app = tornado.web.Application([
