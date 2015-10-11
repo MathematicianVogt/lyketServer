@@ -2,7 +2,7 @@
 	
 	var article = angular.module('article', ['overlay']);
 	
-	article.controller('article_controller', ['$scope', 'articles', function ($scope, articles) {
+	article.controller('article_controller', ['$scope', '$http', 'articles', function ($scope, $http, articles) {
 		
 		$scope.article = {
 			init: function () {
@@ -12,27 +12,31 @@
 			},
 			new_article: function () {
 				
-				article = articles[$scope.n];
+				article = articles.articles[$scope.n];
 				
 				if (!article) return; 
 				
-				$scope.headline = article.title;
-				$scope.img = article.thumb;
-				$scope.url = article.article_url;
-				$scope.lykes = article.likes;
-				$scope.dislykes = article.dislikes;
+				$scope.article.id = article._id;
+				$scope.article.headline = article.title;
+				$scope.article.img = article.thumb;
+				$scope.article.url = article.article_url;
+				$scope.article.lykes = article.likes;
+				$scope.article.dislykes = article.dislikes;
 				
 			},
+			id: '',
 			headline: "A Headline ryan is the greatest programmer in the world, Nobel Organization says",
 			img: "http://i.imgur.com/yKpJaQr.png",
 			url: "http://www.google.com",
 			lykes: 1337,
 			dislykes: 69,
 			lyke: function () {
-				console.log('Lyked!');
+				$scope.article.lykes++;
+				$http.get('/lyke/' + $scope.article.id);
 			},
 			dislyke: function () {
-				console.log('Dislyked');
+				$http.get('/dislyke/' + $scope.article.id);
+				$scope.article.dislykes++;
 			},
 			overlay: {
 				display: false,

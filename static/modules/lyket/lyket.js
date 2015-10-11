@@ -26,7 +26,6 @@
 					});
 
 			};
-			
 			$scope.articles();
 
 		}
