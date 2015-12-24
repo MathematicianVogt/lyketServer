@@ -46,7 +46,7 @@ def main():
 		tornado.web.url(r'/static/(.*)', tornado.web.StaticFileHandler, {'path': os.path.join(os.getcwd(), 'static')}),
 		tornado.web.url(r'/', HomeHandler)
 	], debug=True)
-	app.listen(80)
+	app.listen(8000)
 	tornado.ioloop.IOLoop.current().start()
 	
 if __name__ == '__main__':
