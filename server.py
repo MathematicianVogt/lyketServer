@@ -17,6 +17,7 @@ class ArticleHandler(tornado.web.RequestHandler):
 		
 		for article in articles:
 			article['_id'] = str(article['_id'])
+            article['creationtime'] = article['creationtime'].isoformat()
 		
 		self.write({'results': articles})
 		
