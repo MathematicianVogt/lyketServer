@@ -61,10 +61,10 @@
 	width: 50%;
 	height: 50%;
 	float: left;
-  text-align: center;
-  background-color: rgba(0,0,0,.75);
-  font-size: 30px;
-	line-height: 39px;
+    text-align: center;
+    background-color: rgba(0,0,0,.75);
+    font-size: 26px;
+	line-height: 30px;
 	cursor: pointer;
 	position: relative;
 }
